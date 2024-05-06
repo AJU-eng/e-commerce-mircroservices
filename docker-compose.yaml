@@ -1,0 +1,50 @@
+version: '3.8'
+services:
+   cart:
+    build: 
+      context: ./cart
+      dockerfile: Dockerfile 
+    image: aju404/e-commerce-cart
+    container_name: cart_container
+    ports:
+      - "1000:1000"
+    volumes:
+      - ./cart:/app
+      - /app/node_modules
+   order:
+    build:
+      context: ./order
+      dockerfile: Dockerfile
+    image: aju404/e-commerce-order
+    container_name: order_container
+    ports:
+      - "2000:2000"
+    volumes:
+      - ./order:/app
+      - /app/node_modules
+   product:
+    build:
+      context: ./product
+      dockerfile: Dockerfile 
+    image: aju404/e-commerce-product
+    container_name: product_container
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./product:/app
+      - /app/node_modules
+   user:
+    build:
+      context: ./user
+      dockerfile: Dockerfile
+    image: aju404/e-commerce-user
+    container_name: user_container
+    ports:
+      - "4000:4000"
+    volumes:
+      - ./user:/app
+      - /app/node_modules
+    
+    
+     
+      
